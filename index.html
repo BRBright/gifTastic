@@ -46,19 +46,22 @@
         console.log(response);
         var results = response.data;
 
-        for (var i = 0; i < results.length; i++) {
+        for (var i = 0; i < 10; i++) {
         var gifDiv = $("<div>");
 
         var rating = results[i].rating;
 
         var p = $("<p>").text("Rating: " + rating);
 
-        var personImage = $("<img>");
+        var giphy = $("<img>");
 
-        personImage.attr("src", results[i].images.fixed_height.url);
+        giphy.attr("src", results[i].images.fixed_height_still.url);
+        giphy.attr("animate", results[i].images.fixed_height.url);
+        giphy.attr("still", results[i].images.fixed_height_still.url);
+        giphy.attr("data-state", "still");
 
         gifDiv.append(p);
-        gifDiv.append(personImage);
+        gifDiv.append(giphy);
 
         $("#gifs-appear-here").prepend(gifDiv);
         }
